@@ -1,0 +1,519 @@
+
+/* Styles généraux */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f5f5f5;
+    text-align: center;
+    min-height: 100vh; /* Assure que le body occupe toute la hauteur de l'écran */
+    display: flex; /* Utilisation de flexbox pour le layout */
+    flex-direction: column; /* Orientation verticale des éléments */
+    margin: 0; /* Supprimer les marges par défaut du body */
+}
+
+header {
+    background: linear-gradient(135deg, #0085C7, #004B87);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-olympique {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.sous-titre {
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* Navigation */
+nav {
+    background-color: #004B87;
+    padding: 1rem 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin: 0 1.5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #F4C300;
+}
+
+/* Contenu principal */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    color: #0085C7;
+    border-bottom: 2px solid #F4C300;
+    padding-bottom: 0.5rem;
+}
+
+.annees-olympiques {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: center; /* Centre les éléments horizontalement */
+    
+}
+
+.annee-card {
+    background-color: #004B87;
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    width: calc(33% - 1rem);
+    min-height: 200px; /* Assure une bonne hauteur minimum */
+    aspect-ratio: 16/9; /* Garde un bon ratio largeur/hauteur */
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Permet d'aligner le titre et le texte en colonne */
+    justify-content: center; /* Centre verticalement */
+    align-items: center; /* Centre horizontalement */
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative; /* Permet à ::before d'être bien positionné */
+    z-index: 1;
+}
+
+.annee-card h3 {
+    font-size: 1.5rem; /* Agrandit le titre */
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.annee-card p {
+    font-size: 1.2rem; /* Agrandit le texte */
+}
+
+.annee-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%; /* Remplit toute la div sans marges */
+    background-position: center center; /* Centrage parfait */
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.2); /* Ajoute une légère couleur de fond */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+}
+
+
+/* Images spécifiques pour chaque carte */
+.tokyo-2020::before { background-image: url('./Images/2017.jpg'); }
+.pekin-2022::before { background-image: url('./Images/Beijing-2022.jpg'); }
+.paris-2024::before { background-image: url('./Images/JO-paris.jpg'); }
+.milan-cortina-2026::before { background-image: url('./Images/milano.webp'); }
+.los-angeles-2028::before { background-image: url('./Images/x1080.jpg'); }
+.jeux-hiver-2030::before { background-image: url('./Images/JO+2030.jpg'); }
+
+/* Effet au survol */
+.annee-card:hover::before {
+    opacity: 1; /* Rend l'image complètement visible */
+}
+
+/* Ajouter un léger filtre pour améliorer la lisibilité du texte */
+.annee-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Ajoute un fondu noir pour mieux voir le texte */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+}
+
+/* Activer le filtre noir au survol */
+.annee-card:hover::after {
+    opacity: 1;
+}
+
+/* Pied de page */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+    width: 100%;
+    margin-top: auto; /* Pousse le footer tout en bas */
+}
+
+.reseaux-sociaux {
+    margin-bottom: 15px;
+}
+
+.reseaux-sociaux a {
+    color: white;
+    font-size: 28px;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.reseaux-sociaux a:hover {
+    transform: scale(9.2);
+}
+
+.reseaux-sociaux a[href*="x.com"]:hover {
+    color: #1DA1F2; /* Couleur X (Twitter) */
+}
+
+.reseaux-sociaux a[href*="youtube.com"]:hover {
+    color: #FF0000; /* Couleur YouTube */
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* ---- Styles généraux ---- */
+.page1 {
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top left, #0080ff, #0053a7 40%, #111 100%); /* Background dégradé radial */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+/* Conteneur central qui aligne tout en colonne */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Icône au-dessus du titre */
+.icon-top {
+    font-size: 5rem; /* Grande taille */
+    color: white;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Titre stylé */
+.titre {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+/* Sous-titre */
+.sous-titre {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+
+/* ---- Conteneur du formulaire ---- */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+/* ---- Style des containers des inputs ---- */
+.input-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #004B87;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    text-align: center;
+}
+
+.input-container input:focus {
+    border-color: #FFD700; /* Effet doré au focus */
+}
+
+/* ---- Style des containers des boutons ---- */
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.button-container button {
+    width: 50%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+/* ---- Bouton Connexion ---- */
+.button-container button[name="login"] {
+    background: #004B87;
+    color: white;
+}
+
+.button-container button[name="login"]:hover {
+    background: #002F5E; /* Bleu foncé au survol */
+}
+
+/* ---- Bouton Inscription ---- */
+.button-container button[name="register"] {
+    background: #FFD700;
+    color: black;
+}
+
+.button-container button[name="register"]:hover {
+    background: #E6C200; /* Doré foncé au survol */
+}
+
+
+
+.reseaux-sociaux a {
+    color: white;
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+
+.ajout-panier {
+    background: linear-gradient(45deg, #0085C7 20%, #F4C300 25%, #34A853 50%, #E4002B 75%, #000000 80%);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.ajout-panier:hover {
+    background: white;
+    color: black;
+    border: 2px solid #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.cardoffres img {
+    width: 100%; /* Ajuste la largeur pour qu'elle remplisse son conteneur */
+    max-width: 250px; /* Limite la taille maximale */
+    height: 180px; /* Hauteur fixe pour uniformiser */
+    object-fit: cover; /* Évite les déformations */
+    border: 3px solid #0077b6; /* Bordure stylée (bleu) */
+    border-radius: 10px; /* Arrondi les coins */
+    margin-top: 15px; /* Espace en haut */
+    display: block; /* Évite les espaces indésirables sous l'image */
+    margin-left: auto;
+    margin-right: auto; /* Centre l'image horizontalement */
+}
+
+.panier-section {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#panier-liste {
+    list-style-type: none;
+    padding: 0;
+}
+
+#panier-liste li {
+    background: white;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.total-container {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 15px 0;
+}
+
+.btn-vider {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-vider:hover {
+    background: #c82333;
+}
+
+li{
+    list-style-type: none; /* Supprime les puces */
+}
+
+.btn-connexion {
+    background-color: #007bff; /* Couleur bleue */
+    color: white; /* Texte blanc */
+    border: none; /* Pas de bordure */
+    padding: 12px 20px; /* Espacement interne */
+    font-size: 1.2em; /* Taille de la police */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur en forme de main */
+    transition: background-color 0.3s, transform 0.2s; /* Transition fluide */
+    width: 100%; /* Largeur à 100% du conteneur parent */
+    max-width: 150px; /* Largeur max pour ne pas prendre trop de place */
+    margin: 10px auto; /* Centré avec un petit espace */
+}
+
+.btn-connexion:hover {
+    background-color: #0056b3; /* Bleu plus foncé au survol */
+    transform: scale(1.05); /* Agrandissement au survol */
+}
+
+.btn-connexion:active {
+    background-color: #003366; /* Encore plus foncé lorsqu'on clique */
+    transform: scale(1); /* Restaure la taille après le clic */
+}
+
+
+
+.admin-footer {
+    display: flex; /* Important pour utiliser les propriétés flex sur les enfants */
+    justify-content: center; /* Centre horizontalement les éléments enfants */
+    align-items: center; /* Centre verticalement les éléments enfants (si nécessaire) */
+    padding: 15px 20px;
+   
+}
+
+.btn-logout {
+    display: flex; /* Utiliser flexbox pour le centrage */
+    align-items: center; /* Centre verticalement le contenu */
+    justify-content: center; /* Centre horizontalement le contenu */
+    padding: 10px 20px; /* Espacement intérieur du bouton */
+    font-size: 16px; /* Taille de la police */
+    font-weight: bold; /* Texte en gras */
+    text-decoration: none; /* Supprime le soulignement par défaut des liens */
+    color: #fff; /* Couleur du texte en blanc */
+    background-color: #dc3545; /* Couleur de fond rouge (couleur d'alerte pour la déconnexion) */
+    border: none; /* Supprime la bordure par défaut du bouton */
+    border-radius: 5px; /* Bords arrondis */
+    cursor: pointer; /* Curseur de la souris change au survol */
+    transition: background-color 0.3s ease; /* Animation de transition pour le survol */
+    width: 150px;
+}
+
+.btn-logout:hover {
+    background-color: #c82333; /* Couleur de fond plus foncée au survol */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav li {
+        margin: 0.5rem 0;
+    }
+    
+    .annee-card {
+        width: 100%;
+    }
+}
