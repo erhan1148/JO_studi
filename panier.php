@@ -239,6 +239,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <ul id="panier-liste"></ul>
     <div id="panier-total" class="total-container"></div>
     <button id="vider-panier" class="btn-vider">🗑️ Vider le Panier</button>
+    <button id="commander" class="btn-commander">🛒 Commander</button>
 </section>
 
     </main>
